@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', type: 'number', width: 90 },
   { field: 'imageName', headerName: 'Image name', type: 'string', width: 200 },
   { field: 'size', headerName: 'Size', type: 'string', width: 130 },
   { field: 'recognitionResult', headerName: 'Recognition Result', type: 'string', width: 200 },
