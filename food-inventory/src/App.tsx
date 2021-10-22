@@ -1,107 +1,44 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import { Button, FormControl, IconButton, Input, InputAdornment, InputLabel, Link, Stack, TextField } from '@mui/material';
-import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
-import LockRoundedIcon from '@mui/icons-material/LockRounded';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import LoginPage from './screens/login_screen';
+import DataTable from './screens/data_table_screen';
+import UploadImage from './screens/upload_image_screen';
 
-
-export default function BasicGrid() {
-
-  const [values, setValues] = React.useState({
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
-  });
-
-  const handleChange = (prop: string): (event: any) => void => {
-    return (event) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-  };
-
+export default function App() {
   return (
-    <Box sx={{ pt: "5%" , pl:"5%" , pr:"5%" , pb:"5%"}} bgcolor="purple" alignItems="center" justifyContent="center">
-    <Box display="grid" gridTemplateColumns="repeat(11, 1fr)" gap={2} bgcolor="white" alignItems="center" justifyContent="center" >
-      <Box gridRow="span 4" gridColumn="span 6" >
-       <img src= "user.png" width = "200" height="200"></img>
-      </Box>
-      <Box gridColumn="span 4" >
-        <Item>Login Page</Item>
-      </Box>
-      <Box gridColumn="span 4" sx={{ '& > :not(style)': { m: 1 } }}>
-        <FormControl variant="standard" fullWidth>
-          <InputLabel htmlFor="input-with-icon-adornment">
-            Username or email
-          </InputLabel>
-          <Input
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <EmailRoundedIcon/>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-      </Box>
-      
-      <Box gridColumn="span 4">
-      <FormControl sx={{ m: 1}} variant="standard" fullWidth>
-          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-          <Input
-            id="standard-adornment-password"
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            startAdornment={
-              <InputAdornment position="start">
-                <LockRoundedIcon/>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-      </Box>
-      <Stack  gridColumn="span 4" direction="column" alignItems="center" spacing={1}>
-        <Button variant="outlined" fullWidth  style={{textTransform: 'none', color: "blue"}}>Login</Button>
-        <Link href="#">Forgot password ?</Link>
-      </Stack>
-     
-    </Box>
-  </Box>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/loginPage">Login page</Link>
+            </li>
+            <li>
+              <Link to="/dataTable">Data table page</Link>
+            </li>
+            <li>
+              <Link to="/uploadImage">Upload image page</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/loginPage">
+            <LoginPage />
+          </Route>
+          <Route path="/dataTable">
+            <DataTable />
+          </Route>
+          <Route path="/uploadImage">
+            <UploadImage />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }

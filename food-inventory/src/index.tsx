@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import DataTable from './data_table';
 import reportWebVitals from './reportWebVitals';
+
+import DataTable from './screens/data_table_screen';
+import LoginPage from './screens/login_screen';
+import UploadImage from './screens/upload_image_screen';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <DataTable />
   </React.StrictMode>,
   document.getElementById('root')
 );
