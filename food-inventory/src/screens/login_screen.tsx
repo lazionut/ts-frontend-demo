@@ -6,12 +6,12 @@ import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useContext } from 'react';
-import { changeAuthState, userContext } from '../userContext';
+import { changeAuthState, userContext } from '../components/userContext';
 
 let adminId="utilizator", adminPassword="parola";
 
 export default function LoginPage() {
-  const loggedUser = useContext(userContext);
+  let loggedUser = useContext(userContext);
 
 
   const [values, setValues] = React.useState({

@@ -9,6 +9,7 @@ import LoginPage from './screens/login_screen';
 import DataTable from './screens/data_table_screen';
 import UploadImage from './screens/upload_image_screen';
 import { createContext, useState } from 'react';
+import DatePicker from './components/date-picker';
 
 export default function App() {
   return (
@@ -17,26 +18,32 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/loginPage">Login page</Link>
+              <Link to="/login-page">Login page</Link>
             </li>
             <li>
-              <Link to="/dataTable">Data table page</Link>
+              <Link to="/data-table">Data table page</Link>
             </li>
             <li>
-              <Link to="/uploadImage">Upload image page</Link>
+              <Link to="/upload-image">Upload image page</Link>
+            </li>
+            <li>
+              <Link to="/calendar">See calendar</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/loginPage">
+          <Route path="/login-page">
             <LoginPage />
           </Route>
-          <Route path="/dataTable">
+          <Route path="/data-table">
             <DataTable />
           </Route>
-          <Route path="/uploadImage">
+          <Route path="/upload-image">
             <UploadImage />
+          </Route>
+          <Route path="/calendar">
+            <DatePicker />
           </Route>
         </Switch>
       </div>

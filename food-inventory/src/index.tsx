@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import DataTable from './screens/data_table_screen';
 import LoginPage from './screens/login_screen';
 import UploadImage from './screens/upload_image_screen';
-import { userContext } from './userContext';
+import { userContext } from './components/userContext';
 
 var state = {
       user: "notLoggedIn"
