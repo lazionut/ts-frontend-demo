@@ -8,10 +8,19 @@ import DataTable from './screens/data_table_screen';
 import LoginPage from './screens/login_screen';
 import UploadImage from './screens/upload_image_screen';
 import { userContext } from './components/userContext';
+import { axiosInstance } from './api/instance';
 
 var state = {
       user: "notLoggedIn"
     };
+async function getResult() {
+  let result = await axiosInstance.get("http://localhost:3000/api/users").then(function (response) {
+    console.log(response.data);
+  });
+  return result;
+}
+console.log(getResult());
+
 
 ReactDOM.render(
   <React.StrictMode>

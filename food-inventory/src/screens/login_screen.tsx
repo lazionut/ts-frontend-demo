@@ -7,6 +7,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useContext } from 'react';
 import { changeAuthState, userContext } from '../components/userContext';
+import loginService from '../hooks/useAuth';
 
 let adminId="utilizator", adminPassword="parola";
 
@@ -40,10 +41,7 @@ export default function LoginPage() {
     event.preventDefault();
   };
   
-  function handleLogIn (id:string, password:string) {
-      if (id==adminId && password==adminPassword)  
-        changeAuthState("admin");
-  }
+
 
 
   return (
@@ -102,7 +100,7 @@ export default function LoginPage() {
           </FormControl>
         </Box>
         <Stack gridColumn="span 4" direction="column" alignItems="center" spacing={1}>
-          <Button variant="outlined" fullWidth style={{ textTransform: 'none', color: "blue" }} onClick={() => handleLogIn(values.username,values.password)}>Login</Button>
+          <Button variant="outlined" fullWidth style={{ textTransform: 'none', color: "blue" }} onClick={() => loginService.login(values.username,values.password)}>Login</Button>
           <Link href="#">Forgot password?</Link>
         </Stack>
 
