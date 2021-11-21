@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Button, FormControl, IconButton, Input, InputAdornment, InputLabel, Link, Stack, TextField } from '@mui/material';
+import { Button, FormControl, IconButton, Input, InputAdornment, InputLabel, Link, Stack } from '@mui/material';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import Visibility from '@mui/icons-material/Visibility';
@@ -9,18 +9,13 @@ import { useContext } from 'react';
 import { changeAuthState, userContext } from '../components/userContext';
 import loginService from '../hooks/useAuth';
 
-let adminId="utilizator", adminPassword="parola";
-
 export default function LoginPage() {
   let loggedUser = useContext(userContext);
 
-
   const [values, setValues] = React.useState({
-    amount: '',
+    email: '',
     username: '',
     password: '',
-    weight: '',
-    weightRange: '',
     showPassword: false,
   });
 
@@ -41,14 +36,11 @@ export default function LoginPage() {
     event.preventDefault();
   };
   
-
-
-
   return (
     <Box sx={{ pt: "5%", pl: "5%", pr: "5%", pb: "5%" }} bgcolor="purple" alignItems="center" justifyContent="center">
       <Box display="grid" gridTemplateColumns="repeat(11, 1fr)" gap={2} bgcolor="white" alignItems="center" justifyContent="center" >
         <Box gridRow="span 4" gridColumn="span 6" >
-          <img src="user.png" width="200" height="200"></img>
+          <img src="user.png" width="200" height="200" alt=""></img>
         </Box>
         <Box gridColumn="span 4" sx={{ display: 'flex', justifyContent: 'center' }}>
           Login Page
@@ -100,7 +92,7 @@ export default function LoginPage() {
           </FormControl>
         </Box>
         <Stack gridColumn="span 4" direction="column" alignItems="center" spacing={1}>
-          <Button variant="outlined" fullWidth style={{ textTransform: 'none', color: "blue" }} onClick={() => loginService.login(values.username,values.password)}>Login</Button>
+          <Button variant="outlined" fullWidth style={{ textTransform: 'none', color: "blue" }} onClick={() => loginService.login(values.username, values.password)}>Login</Button>
           <Link href="#">Forgot password?</Link>
         </Stack>
 

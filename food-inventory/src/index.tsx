@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import DataTable from './screens/data_table_screen';
-import LoginPage from './screens/login_screen';
-import UploadImage from './screens/upload_image_screen';
 import { userContext } from './components/userContext';
 import { axiosInstance } from './api/instance';
 

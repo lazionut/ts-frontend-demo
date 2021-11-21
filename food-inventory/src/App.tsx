@@ -8,7 +8,6 @@ import {
 import LoginPage from './screens/login_screen';
 import DataTable from './screens/data_table_screen';
 import UploadImage from './screens/upload_image_screen';
-import { createContext, useState } from 'react';
 import DatePicker from './components/date-picker';
 
 export default function App() {
