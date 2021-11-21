@@ -5,10 +5,18 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useContext } from 'react';
+import { changeAuthState, userContext } from '../components/userContext';
+
+let adminId="utilizator", adminPassword="parola";
 
 export default function LoginPage() {
+  let loggedUser = useContext(userContext);
+
+
   const [values, setValues] = React.useState({
     amount: '',
+    username: '',
     password: '',
     weight: '',
     weightRange: '',
@@ -31,6 +39,12 @@ export default function LoginPage() {
   const handleMouseDownPassword = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
   };
+  
+  function handleLogIn (id:string, password:string) {
+      if (id==adminId && password==adminPassword)  
+        changeAuthState("admin");
+  }
+
 
   return (
     <Box sx={{ pt: "5%", pl: "5%", pr: "5%", pb: "5%" }} bgcolor="purple" alignItems="center" justifyContent="center">
@@ -44,10 +58,13 @@ export default function LoginPage() {
         <Box gridColumn="span 4" sx={{ '& > :not(style)': { m: 1 } }}>
           <FormControl variant="standard" fullWidth>
             <InputLabel htmlFor="input-with-icon-adornment">
-              Username/email
+              Username/email {loggedUser.user}
             </InputLabel>
             <Input
               id="input-with-icon-adornment"
+              type= 'text'
+              value={values.username}
+              onChange={handleChange('username')}
               startAdornment={
                 <InputAdornment position="start">
                   <EmailRoundedIcon />
@@ -85,11 +102,15 @@ export default function LoginPage() {
           </FormControl>
         </Box>
         <Stack gridColumn="span 4" direction="column" alignItems="center" spacing={1}>
-          <Button variant="outlined" fullWidth style={{ textTransform: 'none', color: "blue" }}>Login</Button>
+          <Button variant="outlined" fullWidth style={{ textTransform: 'none', color: "blue" }} onClick={() => handleLogIn(values.username,values.password)}>Login</Button>
           <Link href="#">Forgot password?</Link>
         </Stack>
 
       </Box>
     </Box >
   );
+}
+
+function UserContext(UserContext: any): { user: any; setLoggedInUser: any; } {
+  throw new Error('Function not implemented.');
 }
