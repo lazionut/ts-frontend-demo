@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { useState } from "react";
 import "../stylesheet/date-picker.scss";
 
@@ -8,25 +9,25 @@ export default function DatePicker() {
   let [intervalBegin, setIntervalBegin] = useState(-1);
   let [intervalEnd, setIntervalEnd] = useState(-1);
 
-  function intervalLogic(currentDate: number){
-    console.log(intervalBegin+" "+intervalEnd);
-    switch (intervalState){
-        case 0:{
-            setIntervalBegin(currentDate);
-            setIntervalState(1);
-            break;
-        }
-        case 1:{
-            setIntervalEnd(currentDate);
-            setIntervalState(2);
-            break;
-        }   
-        case 2:{
-            setIntervalBegin(-1);
-            setIntervalEnd(-1);
-            setIntervalState(0);
-            break;
-        }
+  function intervalLogic(currentDate: number) {
+    console.log(intervalBegin + " " + intervalEnd);
+    switch (intervalState) {
+      case 0: {
+        setIntervalBegin(currentDate);
+        setIntervalState(1);
+        break;
+      }
+      case 1: {
+        setIntervalEnd(currentDate);
+        setIntervalState(2);
+        break;
+      }
+      case 2: {
+        setIntervalBegin(-1);
+        setIntervalEnd(-1);
+        setIntervalState(0);
+        break;
+      }
     }
   }
 
@@ -54,7 +55,11 @@ export default function DatePicker() {
     ++days[1];
 
   for (let index = 1; index <= days[initialMonth]; ++index) {
-    calendarDays.push(<li id={index.toString()} onClick={() => intervalLogic(index)}>{index}</li>);
+    calendarDays.push(
+      <li id={index.toString()} onClick={() => intervalLogic(index)}>
+        {index}
+      </li>
+    );
   }
 
   function incrementMonth() {
@@ -74,13 +79,14 @@ export default function DatePicker() {
   }
 
   function incrementYear() {
-      setInitialYear(++initialYear);
+    setInitialYear(++initialYear);
   }
 
   function decrementYear() {
-        setInitialYear(--initialYear);
+    setInitialYear(--initialYear);
   }
 
+  if (localStorage.getItem("token") === null) return <Box>Access Denied</Box>;
   return (
     <div id="date-picker-container">
       <div className="month">

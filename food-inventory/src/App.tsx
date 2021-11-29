@@ -2,13 +2,17 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
-} from 'react-router-dom';
+  Link,
+  Redirect,
+} from "react-router-dom";
 
-import LoginPage from './screens/login_screen';
-import DataTable from './screens/data_table_screen';
-import UploadImage from './screens/upload_image_screen';
-import DatePicker from './components/date-picker';
+import LoginPage from "./screens/login_screen";
+import DataTable from "./screens/data_table_screen";
+import UploadImage from "./screens/upload_image_screen";
+import DatePicker from "./components/date-picker";
+import loginService from "./hooks/useAuth";
+
+let loggedIn: boolean = false;
 
 export default function App() {
   return (
@@ -27,6 +31,9 @@ export default function App() {
             </li>
             <li>
               <Link to="/calendar">See calendar</Link>
+            </li>
+            <li>
+              <button onClick={loginService.logout}>Log out</button>
             </li>
           </ul>
         </nav>
