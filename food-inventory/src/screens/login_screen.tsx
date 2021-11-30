@@ -45,8 +45,8 @@ export default function LoginPage() {
     event.preventDefault();
   };
 
-  const loginClick = () => {
-    loginService.login(values.username, values.password);
+  const loginClick = async () => {
+    await loginService.login(values.username, values.password);
     window.location.reload();
   };
 
@@ -79,7 +79,7 @@ export default function LoginPage() {
         <Box gridColumn="span 4" sx={{ "& > :not(style)": { m: 1 } }}>
           <FormControl variant="standard" fullWidth>
             <InputLabel htmlFor="input-with-icon-adornment">
-              Username 
+              Username
             </InputLabel>
             <Input
               id="input-with-icon-adornment"
