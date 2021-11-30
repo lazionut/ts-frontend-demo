@@ -2,7 +2,7 @@
     background: rgb(10, 100, 143);
     background: linear-gradient(318deg, rgba(10, 100, 143, 1) 28%, rgba(154, 0, 255, 1) 100%);
     height: 30rem;
-    width: 30rem;
+    width: 40rem;
     position: absolute;
     left: 0;
     right: 0;
@@ -12,100 +12,87 @@
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
-}
 
-ul {
-    list-style-type: none;
-}
-
-body {
-    font-family: Verdana, sans-serif;
-}
-
-.month {
-    padding: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-
-    div {
-        margin-left: 0;
-        padding: 0;
-        color: white;
-        font-size: 2rem;
-        text-transform: uppercase;
-    }
-
-    .border-right-container {
-        border-right: 0.15rem solid white;
-        padding-right: 0.5rem;
-        margin-right: 0.25rem;
-    }
-
-    .same-line-display {
-        white-space: nowrap;
-    }
-
-    .triangle-down {
-        border-left: 1rem solid transparent;
-        border-right: 1rem solid transparent;
-        border-top: 1rem solid white;
-        font-size: 0;
-        line-height: 0;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-
-    .prev {
-        float: left;
-    }
-
-    .next {
-        float: right;
-    }
-}
-
-.weekdays {
-    margin: 0;
-    padding: 1rem 0;
-    border-top: 0.15rem solid white;
-    background: rgb(39, 10, 143);
-    background: linear-gradient(80deg, rgba(39, 10, 143, 1) 28%, rgba(154, 0, 255, 1) 100%);
-    font-size: 2rem;
-
-    li {
-        display: inline-block;
-        width: 13.6%;
-        color: white;
+    .month {
+        padding: 1rem;
         text-align: center;
-    }
-}
+        display: flex;
+        justify-content: space-between;
 
-.days {
-    padding: 10px 0;
-    background: rgb(39, 10, 143);
-    background: linear-gradient(80deg, rgba(39, 10, 143, 1) 28%, rgba(154, 0, 255, 1) 100%);
-    margin: 0;
-    border-bottom: 0.15rem solid white;
+        div {
+            margin-left: 0;
+            padding: 0;
+            color: white;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
 
-    li {
-        list-style-type: none;
-        display: inline-block;
-        width: 13.6%;
-        text-align: center;
-        margin-bottom: 0.25rem;
-        font-size: 2rem;
-        color: white;
+        .border-right-container {
+            border-right: 0.15rem solid white;
+            padding-right: 0.5rem;
+            margin-right: 0.25rem;
+        }
 
-        .active {
-            padding: 0.25rem;
-            background: #1abc9c;
-            color: blue !important;
+        .same-line-display {
+            white-space: nowrap;
+        }
+
+        .triangle-down {
+            border-left: 1rem solid transparent;
+            border-right: 1rem solid transparent;
+            border-top: 1rem solid white;
+            font-size: 0;
+            line-height: 0;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .prev {
+            float: left;
+        }
+
+        .next {
+            float: right;
         }
     }
-}
 
-span {
-    font-size: 1.5rem;
-    white-space: pre-line;
+    .daynames {
+        margin: 0;
+        padding: 1rem 0;
+        border-top: 0.15rem solid white;
+        background: rgb(39, 10, 143);
+        background: linear-gradient(80deg, rgba(39, 10, 143, 1) 28%, rgba(154, 0, 255, 1) 100%);
+        font-size: 2rem;
+
+        li {
+            display: inline-block;
+            width: 13.6%;
+            color: white;
+            text-align: center;
+        }
+    }
+
+    .days {
+        padding: 10px 0;
+        background: rgb(39, 10, 143);
+        background: linear-gradient(80deg, rgba(39, 10, 143, 1) 28%, rgba(154, 0, 255, 1) 100%);
+        margin: 0;
+        border-bottom: 0.15rem solid white;
+
+        li {
+            list-style-type: none;
+            display: inline-block;
+            width: 13.6%;
+            text-align: center;
+            margin-bottom: 0.25rem;
+            font-size: 2rem;
+            color: white;
+
+            .active {
+                padding: 0.25rem;
+                background: #1abc9c;
+                color: blue !important;
+            }
+        }
+    }
 }

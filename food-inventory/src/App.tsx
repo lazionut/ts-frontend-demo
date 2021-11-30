@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +16,13 @@ import loginService from "./hooks/useAuth";
 let loggedIn: boolean = false;
 
 export default function App() {
+  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
+  const logoutClick = () => {
+    loginService.logout();
+    forceUpdate();
+  };
+
   return (
     <Router>
       <div>
@@ -33,7 +41,7 @@ export default function App() {
               <Link to="/calendar">See calendar</Link>
             </li>
             <li>
-              <button onClick={loginService.logout}>Log out</button>
+              <button onClick={logoutClick}>Log out</button>
             </li>
           </ul>
         </nav>

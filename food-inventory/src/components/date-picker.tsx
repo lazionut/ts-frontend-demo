@@ -63,7 +63,7 @@ export default function DatePicker() {
   }
 
   function incrementMonth() {
-    if (initialMonth == 11) {
+    if (initialMonth === 11) {
       setInitialMonth(0);
     } else {
       setInitialMonth(++initialMonth);
@@ -71,7 +71,7 @@ export default function DatePicker() {
   }
 
   function decrementMonth() {
-    if (initialMonth == 0) {
+    if (initialMonth === 0) {
       setInitialMonth(11);
     } else {
       setInitialMonth(--initialMonth);
@@ -109,7 +109,7 @@ export default function DatePicker() {
         </div>
       </div>
 
-      <ul className="weekdays">
+      <ul className="daynames">
         <li>MO</li>
         <li>TU</li>
         <li>WE</li>

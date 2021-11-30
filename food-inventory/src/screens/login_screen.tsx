@@ -45,6 +45,11 @@ export default function LoginPage() {
     event.preventDefault();
   };
 
+  const loginClick = () => {
+    loginService.login(values.username, values.password);
+    window.location.reload();
+  };
+
   if (localStorage.getItem("token")) return <Box>Access Denied</Box>;
 
   return (
@@ -74,7 +79,7 @@ export default function LoginPage() {
         <Box gridColumn="span 4" sx={{ "& > :not(style)": { m: 1 } }}>
           <FormControl variant="standard" fullWidth>
             <InputLabel htmlFor="input-with-icon-adornment">
-              Username/email {loggedUser.user}
+              Username 
             </InputLabel>
             <Input
               id="input-with-icon-adornment"
@@ -129,7 +134,7 @@ export default function LoginPage() {
             variant="outlined"
             fullWidth
             style={{ textTransform: "none", color: "blue" }}
-            onClick={() => loginService.login(values.username, values.password)}
+            onClick={loginClick}
           >
             Login
           </Button>
