@@ -19,12 +19,11 @@ export default function DatePicker() {
       }
       case 1: {
         setIntervalEnd(currentDate);
-        setIntervalState(2);
-        break;
-      }
-      case 2: {
-        setIntervalBegin(-1);
-        setIntervalEnd(-1);
+        if ( intervalBegin <= intervalEnd)
+        {
+          //ApelFunctie
+          console.log(intervalBegin + " " + intervalEnd);
+        }
         setIntervalState(0);
         break;
       }

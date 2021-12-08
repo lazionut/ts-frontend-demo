@@ -16,8 +16,8 @@ async function getResult() {
   });
   return result;
 }
-console.log(getResult());
 
+console.log(getResult());
 
 ReactDOM.render(
   <React.StrictMode>
