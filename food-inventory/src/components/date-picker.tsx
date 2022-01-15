@@ -19,8 +19,7 @@ export default function DatePicker() {
       }
       case 1: {
         setIntervalEnd(currentDate);
-        if ( intervalBegin <= intervalEnd)
-        {
+        if (intervalBegin <= intervalEnd) {
           //ApelFunctie
           console.log(intervalBegin + " " + intervalEnd);
         }
@@ -85,7 +84,6 @@ export default function DatePicker() {
     setInitialYear(--initialYear);
   }
 
-  if (localStorage.getItem("token") === null) return <Box>Access Denied</Box>;
   return (
     <div id="date-picker-container">
       <div className="month">

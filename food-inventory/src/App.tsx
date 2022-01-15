@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,17 +12,22 @@ import DataTable from "./screens/data_table_screen";
 import UploadImage from "./screens/upload_image_screen";
 import DatePicker from "./components/date-picker";
 import loginService from "./hooks/useAuth";
+import { userContext } from "./components/userContext";
 
-let loggedIn: boolean = false;
+const RestrictedRoute = ({ ...props }) => {
+  const usedContext = React.useContext(userContext);
+  if (usedContext.isLoggedIn === true) {
+    return <Route {...props} />;
+  }
+  return <Redirect to="/" />;
+};
+
+const logoutClick = () => {
+  loginService.logout();
+  window.location.reload();
+};
 
 export default function App() {
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
-
-  const logoutClick = () => {
-    loginService.logout();
-    forceUpdate();
-  };
-
   return (
     <Router>
       <div>
@@ -50,15 +55,15 @@ export default function App() {
           <Route path="/login-page">
             <LoginPage />
           </Route>
-          <Route path="/data-table">
+          <RestrictedRoute path="/data-table">
             <DataTable />
-          </Route>
-          <Route path="/upload-image">
+          </RestrictedRoute>
+          <RestrictedRoute path="/upload-image">
             <UploadImage />
-          </Route>
-          <Route path="/calendar">
+          </RestrictedRoute>
+          <RestrictedRoute path="/calendar">
             <DatePicker />
-          </Route>
+          </RestrictedRoute>
         </Switch>
       </div>
     </Router>

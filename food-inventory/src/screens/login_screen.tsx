@@ -14,12 +14,10 @@ import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useContext } from "react";
-import { changeAuthState, userContext } from "../components/userContext";
+import { userContext } from "../components/userContext";
 import loginService from "../hooks/useAuth";
 export default function LoginPage() {
-  let loggedUser = useContext(userContext);
-  let loggedIn: boolean = true;
+  let loggedUser = React.useContext(userContext);
 
   const [values, setValues] = React.useState({
     email: "",
@@ -27,6 +25,8 @@ export default function LoginPage() {
     password: "",
     showPassword: false,
   });
+
+  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const handleChange = (prop: string): ((event: any) => void) => {
     return (event) => {
@@ -47,10 +47,16 @@ export default function LoginPage() {
 
   const loginClick = async () => {
     await loginService.login(values.username, values.password);
-    window.location.reload();
+    if (localStorage.getItem("token")) {
+      loggedUser.isLoggedIn = true;
+      window.location.reload();
+    }
   };
 
-  if (localStorage.getItem("token")) return <Box>Access Denied</Box>;
+  if (localStorage.getItem("token")) {
+    loggedUser.isLoggedIn = true;
+    return <Box>Access denied</Box>;
+  }
 
   return (
     <Box

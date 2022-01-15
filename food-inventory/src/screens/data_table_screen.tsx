@@ -1,6 +1,7 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
+import { userContext } from "../components/userContext";
 
 const columns: GridColDef[] = [
   { field: "imageName", headerName: "Image name", type: "string", width: 200 },
@@ -56,7 +57,6 @@ const rows = [
 ];
 
 export default function DataTable() {
-  if (localStorage.getItem("token") === null) return <Box>Access Denied</Box>;
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

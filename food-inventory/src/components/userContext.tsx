@@ -1,9 +1,5 @@
-import React from 'react';
+import React from "react";
 
-var userContext = React.createContext({user: ""});
+let userContext = React.createContext({ isLoggedIn: false });
 
-export function changeAuthState(newUser: string) {
-    userContext = React.createContext({user: newUser});
-  }
-   
 export { userContext };

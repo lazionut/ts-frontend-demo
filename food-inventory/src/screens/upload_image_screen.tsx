@@ -1,14 +1,22 @@
+import React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+
+import { userContext } from "../components/userContext";
 
 const Input = styled("input")({
   display: "none",
 });
 
 export default function UploadImage() {
-  if (localStorage.getItem("token") === null) return <Box>Access Denied</Box>;
+  const [values, setValues] = React.useState({
+    email: "",
+    username: "",
+    password: "",
+    showPassword: false,
+  });
 
   return (
     <Grid
