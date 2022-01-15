@@ -14,8 +14,10 @@ import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import { userContext } from "../components/userContext";
 import loginService from "../hooks/useAuth";
+
 export default function LoginPage() {
   let loggedUser = React.useContext(userContext);
 
