@@ -13,6 +13,7 @@ import UploadImage from "./screens/upload_image_screen";
 import DatePicker from "./components/date-picker";
 import loginService from "./hooks/useAuth";
 import { userContext } from "./components/userContext";
+import { Box } from "@mui/material";
 
 const RestrictedRoute = ({ ...props }) => {
   const usedContext = React.useContext(userContext);

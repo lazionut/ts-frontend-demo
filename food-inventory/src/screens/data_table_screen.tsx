@@ -1,6 +1,6 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import Box from "@mui/material/Box";
+
 import { userContext } from "../components/userContext";
 
 const columns: GridColDef[] = [

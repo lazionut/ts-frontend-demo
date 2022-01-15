@@ -51,13 +51,13 @@ export default function LoginPage() {
     await loginService.login(values.username, values.password);
     if (localStorage.getItem("token")) {
       loggedUser.isLoggedIn = true;
-      window.location.reload();
+      forceUpdate();
     }
   };
 
   if (localStorage.getItem("token")) {
     loggedUser.isLoggedIn = true;
-    return <Box>Access denied</Box>;
+    return <Box>User logged in</Box>;
   }
 
   return (
