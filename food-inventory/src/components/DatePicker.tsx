@@ -54,7 +54,7 @@ export default function DatePicker() {
       return;
     }
     dateIntervalService.postDateInterval(dateInterval[0], dateInterval[1]);
-    window.location.reload();
+    //window.location.reload();
   }
 
   let days: number[] = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30];
