@@ -1,8 +1,6 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
-import { userContext } from "../components/userContext";
-
 const columns: GridColDef[] = [
   { field: "imageName", headerName: "Image name", type: "string", width: 200 },
   { field: "size", headerName: "Size", type: "string", width: 130 },
@@ -56,7 +54,7 @@ const rows = [
   },
 ];
 
-export default function DataTable() {
+export default function DataTableScreen() {
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid

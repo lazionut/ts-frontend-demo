@@ -7,13 +7,13 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import LoginPage from "./screens/login_screen";
-import DataTable from "./screens/data_table_screen";
-import UploadImage from "./screens/upload_image_screen";
-import DatePicker from "./components/date-picker";
+import LoginPageScreen from "./screens/LoginScreen";
+import DataTableScreen from "./screens/DataTableScreen";
+import UploadImageScreen from "./screens/UploadImageScreen";
 import loginService from "./hooks/useAuth";
-import { userContext } from "./components/userContext";
-import { Box } from "@mui/material";
+import { userContext } from "./utils/userContext";
+import DateIntervalsTable from "./components/DateIntervalsTable";
+import ScheduleScreen from "./screens/ScheduleScreen";
 
 const RestrictedRoute = ({ ...props }) => {
   const usedContext = React.useContext(userContext);
@@ -35,7 +35,7 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/login-page">Login page</Link>
+              <Link to="/login">Login page</Link>
             </li>
             <li>
               <Link to="/data-table">Data table page</Link>
@@ -44,7 +44,7 @@ export default function App() {
               <Link to="/upload-image">Upload image page</Link>
             </li>
             <li>
-              <Link to="/calendar">See calendar</Link>
+              <Link to="/schedule">Schedule page</Link>
             </li>
             <li>
               <button onClick={logoutClick}>Log out</button>
@@ -53,17 +53,17 @@ export default function App() {
         </nav>
 
         <Switch>
-          <Route path="/login-page">
-            <LoginPage />
+          <Route path="/login">
+            <LoginPageScreen />
           </Route>
           <RestrictedRoute path="/data-table">
-            <DataTable />
+            <DataTableScreen />
           </RestrictedRoute>
           <RestrictedRoute path="/upload-image">
-            <UploadImage />
+            <UploadImageScreen />
           </RestrictedRoute>
-          <RestrictedRoute path="/calendar">
-            <DatePicker />
+          <RestrictedRoute path="/schedule">
+            <ScheduleScreen />
           </RestrictedRoute>
         </Switch>
       </div>

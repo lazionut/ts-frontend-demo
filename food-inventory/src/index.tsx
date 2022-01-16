@@ -4,19 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { axiosInstance } from "./api/instance";
-
-async function getResult() {
-  let result = await axiosInstance
-    .get("http://localhost:3000/api/users")
-    .then(function (response) {
-      console.log(response.data);
-    });
-  return result;
-}
-
-console.log(getResult());
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -7,7 +7,6 @@ import {
   Input,
   InputAdornment,
   InputLabel,
-  Link,
   Stack,
 } from "@mui/material";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
@@ -15,10 +14,10 @@ import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import { userContext } from "../components/userContext";
+import { userContext } from "../utils/userContext";
 import loginService from "../hooks/useAuth";
 
-export default function LoginPage() {
+export default function LoginScreen() {
   let loggedUser = React.useContext(userContext);
 
   const [values, setValues] = React.useState({
@@ -27,7 +26,7 @@ export default function LoginPage() {
     password: "",
     showPassword: false,
   });
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   const handleChange = (prop: string): ((event: any) => void) => {
@@ -55,7 +54,7 @@ export default function LoginPage() {
     }
   };
 
-  if (localStorage.getItem("token")) {
+  if (localStorage.getItem("token") !== null) {
     loggedUser.isLoggedIn = true;
     return <Box>User logged in</Box>;
   }
@@ -146,13 +145,8 @@ export default function LoginPage() {
           >
             Login
           </Button>
-          <Link href="#">Forgot password?</Link>
         </Stack>
       </Box>
     </Box>
   );
-}
-
-function UserContext(UserContext: any): { user: any; setLoggedInUser: any } {
-  throw new Error("Function not implemented.");
 }

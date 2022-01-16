@@ -26,7 +26,7 @@ const dateIntervalService = {
       const resp = await axiosInstance.get(
         "https://us-central1-fsdscheduler.cloudfunctions.net/getDateInterval"
       );
-      console.log(resp.request);
+      console.log(resp.data);
       return resp.data;
     } catch (error) {
       const apiError = error as AxiosError;
