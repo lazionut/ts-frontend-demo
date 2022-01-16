@@ -12,7 +12,6 @@ import DataTableScreen from "./screens/DataTableScreen";
 import UploadImageScreen from "./screens/UploadImageScreen";
 import loginService from "./hooks/useAuth";
 import { userContext } from "./utils/userContext";
-import DateIntervalsTable from "./components/DateIntervalsTable";
 import ScheduleScreen from "./screens/ScheduleScreen";
 
 const RestrictedRoute = ({ ...props }) => {
@@ -70,3 +69,7 @@ export default function App() {
     </Router>
   );
 }
+
+// NGINX image
+//docker build -t food-inventory .
+//docker run -p 80:80 food-inventory
