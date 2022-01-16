@@ -146,7 +146,7 @@ export default function DatePicker() {
 
       <ul id="days">{calendarDays}</ul>
       <button id="submitButton" onClick={() => submitDateInterval()}>
-        Submit day interval
+        Submit date interval
       </button>
     </div>
   );
